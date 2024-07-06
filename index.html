@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Ánimo, Enemiga!</title>
+    <link rel="shortcut icon" href="https://static.vecteezy.com/system/resources/previews/036/444/099/non_2x/panda-animal-head-free-png.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="style.css">
+        
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <main>
+
+        <h1>¡Hola Ruliza!</h1>
+        <img class="friend-photo" src="https://scontent.flim6-2.fna.fbcdn.net/v/t39.30808-6/392861066_4385123818379829_4792383254647713859_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE8HwgqWSWtDETjk6dboEQQL9JYx9tdSUEv0ljH211JQXQBy73ljJVRmMmHXYaRblDXNIdGYfpSR940DFKRrC0-&_nc_ohc=bkZFchXe33kQ7kNvgHjMei_&_nc_oc=AdgPDFOEh6tysKnN1u-y2BBvVjNa7CskeTiQJOY4LjWhVy6vzOV0ur1ZR2fnlk_eaOU&_nc_zt=23&_nc_ht=scontent.flim6-2.fna&oh=00_AYDWJg0SVXi57g6EITE2Zx5Affub_CI2g_jWqs1GSiF0HQ&oe=668F6961" alt="Foto de mi amiga" >
+    
+        <p>Esta página esté hecho para arrancarte una sonrisa y hacer tu día un poco más brillante,</p>
+        <p>y también para hacerte recordar que:</p>
+    
+        <div class="quote" id="quote"></div>
+        <p>Y ahora una pregunta seria:</p>
+        <div class="question">¿Te gustan los pandas?</div>
+        <div class="answer-buttons">
+            <button class="answer-button" onclick="showResponse('no')">No</button>
+            <button class="answer-button" onclick="showResponse('yes')">Sí</button>
+        </div>
+        <div class="response-message" id="response-message"></div>
+    
+        <h1>🐼</h1>
+    
+        <p>La vida no sigue un camino recto; siempre hay obstáculos.</p>
+        <p>Observa con orgullo todo el camino que has recorrido hasta ahora y todos los logros que has alcanzado, a pesar de los desafíos que has enfrentado.</p>
+    
+        <section id="photos_recorrido">
+    
+            <button id="startButton">Darle un vistazo</button>
+            <div class="swiper-container" style="max-width: 600px; max-height: 400px;">
+                <div class="swiper-wrapper">
+                    <!-- Aquí se llenarán dinámicamente las imágenes -->
+                </div>
+                <div class="swiper-button-next swiper-button"></div>
+                <div class="swiper-button-prev swiper-button"></div>
+            </div>
+        </section>
+        
+    
+    
+        <br>
+        <br>
+        
+    
+        <p>Y por último, te dejo algunos video por aquí. A ver qué te sale👀</p>
+    
+        <button class="video-button" onclick="showVideo()">¡Ver video😶‍🌫️!</button>
+        <div class="video-container" id="video-container"></div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    
+    <script>
+        const quotes = [
+            "La vida es como una bicicleta. Para mantener el equilibrio, debes seguir adelante.",
+            "La vida no se trata de esperar a que pase la tormenta, sino de aprender a bailar bajo la lluvia.",
+            "No temas a los cambios, teme quedarte siempre igual.",
+            "No importa cuántas veces te caigas, lo importante es cuántas veces te levantas.",
+            "No puedes tener un arcoíris sin un poco de lluvia.",
+            "La felicidad no es la ausencia de problemas, sino la habilidad de lidiar con ellos."
+        ];
+
+        const videos = [
+            "https://www.youtube.com/embed/zOpvxVeSV7k",
+            "https://www.youtube.com/embed/msN1oZnh_vo",
+            "https://www.youtube.com/embed/Av5ny7ifRl4"
+        ];
+
+        document.getElementById('quote').innerText = quotes[Math.floor(Math.random() * quotes.length)];
+
+        function showVideo() {
+            const videoUrl = videos[Math.floor(Math.random() * videos.length)];
+            const videoContainer = document.getElementById('video-container');
+            videoContainer.innerHTML = `<iframe src="${videoUrl}?autoplay=1&modestbranding=1&rel=0&controls=1&fs=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>`;
+            
+            videoContainer.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showResponse(answer) {
+            document.querySelector('.answer-buttons').style.display = 'none';
+            const responseMessage = document.getElementById('response-message');
+            if (answer === 'yes') {
+                responseMessage.innerText = "Pues aquí tienes muchos, intenta atraparlos😁";
+            } else {
+                responseMessage.innerText = "Me da igual. Aquí tienes muchos, suerte con intentar quitarlos🤨";
+            }
+            responseMessage.style.display = 'block';
+            startParticles();
+        }
+
+        function startParticles() {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 50,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "shape": {
+                        "type": "image",
+                        "image": {
+                            "src": "https://static.vecteezy.com/system/resources/previews/036/444/099/non_2x/panda-animal-head-free-png.png",
+                            "width": 100,
+                            "height": 100
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": false,
+                        "anim": {
+                            "enable": false,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 30,
+                        "random": true,
+                        "anim": {
+                            "enable": false,
+                            "speed": 40,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": false
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 6,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "repulse"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 400,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 200,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+        }
+
+
+    </script>
+
+    <script>
+        const photos = [
+            "https://scontent.flim6-3.fna.fbcdn.net/v/t39.30808-6/362662525_4322613774630834_4033383469481759393_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEvWTd6q290L0K5Qtm_BCAE-RQNUVqxdW35FA1RWrF1ban4zmAmZk3Kq8tCgnWwmBQks0IyjMEocIffM1LUW77T&_nc_ohc=Nt16d1siMtQQ7kNvgEqKmGf&_nc_oc=AdgWB3JQpQMLptlWBE2h4vg4YrxNJnT9G4jqOTwHr4ldJfV3gLIGmJdXH3lXKngJSok&_nc_zt=23&_nc_ht=scontent.flim6-3.fna&oh=00_AYDG1PcxfW4mvwr8K3up6-Crs9OOmoJwy3azLm3UZfOBsw&oe=668F58E1",
+            "https://scontent.flim6-4.fna.fbcdn.net/v/t39.30808-6/426556363_4475919692633574_517508008305027626_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEVyqIHS6sp3i0lMTMt4OseTC-eG_GelIZML54b8Z6Uhuc_tpzXZcJUmRRIXJXfWBDRhEPI3RfrSOnUXMZmHDGZ&_nc_ohc=r9fofLwAz_EQ7kNvgEuSa2w&_nc_oc=AdiZJdYZJphIRJfo-MJA1m2dcb3_ycG6aDNlqlW0lkoVQdTf-IuD9XkfJEurRs-J3KQ&_nc_zt=23&_nc_ht=scontent.flim6-4.fna&oh=00_AYD7Kb_AlKZt7bxy332hWrQWLSsiNgs-TqmTQXZB947vsg&oe=668F7640",
+            "https://scontent.flim6-3.fna.fbcdn.net/v/t39.30808-6/307378491_4062813123944235_366678624048283733_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGI8l1R-n-fMcc_GMcXim9GG7DWzhzxyVcbsNbOHPHJVwERJAKM1WarEOd7VfTusdv_NqJdbRER9hUEi-emM6k6&_nc_ohc=Aio0fbvY0CQQ7kNvgFDgFNs&_nc_oc=Adj2ZrjGZdFoKdMTq28wIzdlae96skK8fl_y_Ky9qmwa-7Bww6A1aHIwV9Meq5CtD94&_nc_zt=23&_nc_ht=scontent.flim6-3.fna&oh=00_AYBH2L7rxP9LPGz7D9yr9o2Y475vImglrLo4BRh_U0dUyQ&oe=668F6825",
+            
+            "https://scontent.flim6-4.fna.fbcdn.net/v/t39.30808-6/371894755_4348370182055193_7729785065535486147_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEixOYqc9xfCGhD1AYw0QRVdh9C6OmZ7d52H0Lo6Znt3ntpEB1WYSI_ekE4lK7FuF7YuQ3UyS0iMy744ts8oOe3&_nc_ohc=BcjUYNJNzisQ7kNvgFx-zIO&_nc_oc=AdjDdlXsuhOI-KhWUHusXyIhMgTIoAsfj4FEUKGgg8LXR_Ml9n-U8Yc1-Q_G4SKAe4I&_nc_zt=23&_nc_ht=scontent.flim6-4.fna&oh=00_AYDh2G_yRNY2Mr2A-QlYZdaal-h8nYcktxm0X3SZxyWyaQ&oe=668FB312",
+            "https://scontent.flim6-3.fna.fbcdn.net/v/t39.30808-6/271131376_3819930331565850_3156426478569064309_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEDAI0Qx39q91gJ4o_nr7SF5jLgRgFo7WfmMuBGAWjtZzzlKgu9qx5fGHL6ULabG-aRITZOujaEpVKfxaNuGhjo&_nc_ohc=b9DCNs3tzBcQ7kNvgHupYU3&_nc_oc=AdhEvXRiuj4KNCKfA3xtSMn9byFO8NjOVsYnRLv-BBL7fVPgiqT06UPbEJBGBRIlrEU&_nc_zt=23&_nc_ht=scontent.flim6-3.fna&oh=00_AYDYEWC8jhoJk04bp0mjVruu72_P58cH4G-BWyHVnABHEg&oe=668F9BEB",
+            "https://scontent.flim6-2.fna.fbcdn.net/v/t1.6435-9/183270169_3600027420222810_1925719042711492190_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeEsS1qOUxXMsa51r0SMZCh4Jen7EZlTWCAl6fsRmVNYIGb2MVHl77reD5bmpq3aZHX-tLTheTb43O87g2nv6KoE&_nc_ohc=Xq2E12t3ItcQ7kNvgEqe0oK&_nc_oc=AdhAjlUdJ49JHpLFnK_HbTm9optkTouv9qsVwhYXClOzC4e3wxWL0e0S0wM2HGajwg4&_nc_ht=scontent.flim6-2.fna&oh=00_AYAmiIv33nOThE5PP0_Z395cxVIz1AfKV1wJ3FzUzyn8gQ&oe=66B14BF7",
+            "https://scontent.flim6-2.fna.fbcdn.net/v/t1.6435-9/90849256_3177920605766829_8849095285167620096_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeHkgSbkEAlCi9q1seWhRmWBO2XHqsCloiY7ZceqwKWiJm9UOfBkLPiQe9WgqYQXQ9Xm_-9E4Rv4RuBeBwcJeG5N&_nc_ohc=hEDQe3CHfhAQ7kNvgHxUD7t&_nc_oc=AdiG2RVR16uoZD0uz0T0jGc_lB6R1WdI4hZ5yWzhJWNJuHfYFWUJFfDPUjKxSiEEhnw&_nc_ht=scontent.flim6-2.fna&oh=00_AYBxd96T7OzKmVSEFikkRdNC5IwkC2md3g6hjsM8aeJ_9Q&oe=66B13553",
+
+            "https://scontent.flim6-3.fna.fbcdn.net/v/t39.30808-6/313865642_4093810414177839_6367559116738846855_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeHhDMC1wJtR9ovu561dwZrC2bTrpMlSZQPZtOukyVJlA-YZEDJiHEg5A2iNjZdgDOvNi83w5A7e46yBGM9D2BrX&_nc_ohc=AH2OQiR0BcgQ7kNvgEfIs1n&_nc_oc=AdgwKtZVcyr4q_YhX1aPUmTQUT5DvpearhaZsb6bQQqgV-y1TIR4Osqm2hEQl7REz7Q&_nc_zt=23&_nc_ht=scontent.flim6-3.fna&oh=00_AYDL5ftWOvliIK5Kzdow19bLJVo_K-0dvkxWFN_Hg0pQww&oe=668F8B56",
+            "https://scontent.flim6-2.fna.fbcdn.net/v/t1.6435-9/91614239_3177920955766794_8590596983331225600_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeGx696m8JMTsGVUxFwyeu3ec4N-inxt5d9zg36KfG3l30HIcvxWSpdG9saNDfNd7MDoVJK4M51zmRlGx83crEVx&_nc_ohc=bo0pxLlQGDsQ7kNvgFfgHXw&_nc_oc=AdhT8E9JkfUXz3xI-zO_2zZ3B8zYrJ5VfGR-tpssakBDLfzVV0q0wPOf4E40ibLhnfk&_nc_ht=scontent.flim6-2.fna&oh=00_AYAT2xVzOFWmNlkppx-74a4qFuZwqUAz31PnYJNsyPm3GQ&oe=66B10999",
+            
+            "https://scontent.flim6-2.fna.fbcdn.net/v/t1.6435-9/71383825_2976368342588724_7291995457968930816_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeEGtHM6SfkxUaxWBTC5m-ggS_4F3oEAbPRL_gXegQBs9BlVF0OQqwiE86bXZTFbAviWyYWafttcRYObj9_RBg3i&_nc_ohc=C2z7uQY2_dMQ7kNvgHHcLM_&_nc_oc=Adj4wyw956m7BHe2aYUbaxRqpje23VCnQTMW26UKBV0a3EVIap3i86svAUkKu-LfvxM&_nc_ht=scontent.flim6-2.fna&oh=00_AYCWb6CuAonmn5ztER7ZkD80S1bY-XF1ex-FHv-M-F63GA&oe=66B11E35",
+            "https://scontent.flim6-4.fna.fbcdn.net/v/t31.18172-8/11336821_1843721749186728_8168660826220534051_o.jpg?_nc_cat=108&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeH7p9rO5uim8hbZSiyqqcjxxUYWuVgYffTFRha5WBh99NjYEvXH526475-el7fUCcqrGGgmubPs_izCDY8inlp5&_nc_ohc=dr5o3YgggRAQ7kNvgH5w-5u&_nc_oc=AdhOcsQnSXPYN7wv7ucEsQcnm2ghnD4MLp9ZBAW1a_MUEEJRI0sesb2oX0ZDFv4-QMs&_nc_ht=scontent.flim6-4.fna&oh=00_AYAobB80-w1Fzs20FYEnQaVeJDdMJoVuZ0OPPJE8bcB9IA&oe=66B146AC",
+            "https://scontent.flim6-4.fna.fbcdn.net/v/t1.18169-9/14369980_2108931892665711_6696141487126645621_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=53a332&_nc_eui2=AeHULt216_kWkEFfbWtoAYIkewzSa4cC6xB7DNJrhwLrEF3Y5eL0p-2ulHV1k0DJHidImTg3tHcW452Y67oflMnF&_nc_ohc=nEweQnRy7CQQ7kNvgG_C7dB&_nc_oc=Adh28PS3ucKmWgdH-m8gP2dRqMrDbb8zhVA7A0L-spqeol9xUZ0Rm4CGl_htha9IG2s&_nc_ht=scontent.flim6-4.fna&oh=00_AYAlDAACMhRYv7FxVG9e4_3ydA_48CwVvHrZP77UOn1cCw&oe=66B11C69",
+            "https://scontent.flim6-2.fna.fbcdn.net/v/t31.18172-8/10834995_1785305218361715_1765857354662415856_o.jpg?_nc_cat=102&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeHuA4DCHgzqkvnd3ebI2ZAIuLTHkZwNvhm4tMeRnA2-GbNqxkbCWQM1S-ntUzojkwZZZ2Jh8yN17rwXHymdPSLp&_nc_ohc=oa79VQKP1LIQ7kNvgEJ9iDM&_nc_oc=Adg5i16q9Qjruiq-UDrdUO1p-dV_90-dI0rhMs23sVRr9ObhG454sSgpIyYvLy6OJbk&_nc_ht=scontent.flim6-2.fna&oh=00_AYD0JYmBhylcHr3Fm3HriMvMVVST7iNlrNLgGUmqwi4a0w&oe=66B0FB7A",
+            "https://scontent.flim6-3.fna.fbcdn.net/v/t31.18172-8/10959976_1783634655195438_5898875288187316318_o.jpg?_nc_cat=106&ccb=1-7&_nc_sid=a74216&_nc_eui2=AeEWOFdKTdcSZ25HWiQ2a7RplgBDyQhmEHWWAEPJCGYQdeq5vFO9Dq-5tmKgJEaO0g2P0GOmgn1SgbI0MuMU0Z8l&_nc_ohc=5yKjb-4C9sEQ7kNvgFwePmj&_nc_oc=Adi1erKM_luTLAc2P7JNLHzCenwg15ehRJ1D2M6nCWztyXIY0-NGBt96DxSlGNRFULo&_nc_ht=scontent.flim6-3.fna&oh=00_AYCwqpzV99HQEjCRrWFv5uzMA-G9biqu7IwjrV38PrqEug&oe=66B116B6",
+            
+            "https://scontent.flim6-3.fna.fbcdn.net/v/t1.18169-9/10352096_1636088676616704_6179027582531550247_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=53a332&_nc_eui2=AeGpQzyWvcQNl6u3lFc_DOsjbC5BSjoGilJsLkFKOgaKUpJh72bNvGM8YmxxTQRe1X9Qf1Ivty0YBQPcpCvt5L7x&_nc_ohc=zLUZcS6Q0oUQ7kNvgFz82uk&_nc_oc=Adgru21t-L6H474wEcdrZKRzqkBggWyeaQCToq7mPQLRzOYvy3bXF1tLhx4p8q7LouU&_nc_ht=scontent.flim6-3.fna&oh=00_AYDl7ryGS_Oqs7Upj-p-c0FJY-arck8hNqAmo3w5pVVRoQ&oe=66B109F1",
+            "https://scontent.flim6-3.fna.fbcdn.net/v/t1.18169-9/18698058_2295461080679457_3529266111166074298_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=53a332&_nc_eui2=AeFphLSkJEvslksoQKeTyw6xyJ1XZtSV7I7InVdm1JXsjsexoNrd8xL_R66p_G0dRgJhwwpWukeigYu6fzJc1rbz&_nc_ohc=t92mUPHfUR0Q7kNvgHjX0U1&_nc_oc=AdjEHn_rfrVRt2xgGI-F3kKFEjGR7HuGt2lxxgVbWupRYRufh26q1xzkBaAiYryCcYg&_nc_ht=scontent.flim6-3.fna&oh=00_AYD0IvDhx6UkOcoJc01gTIkfY6daKo6Kyn4ZubALVTdoPw&oe=66B0FB25",
+            "https://scontent.flim6-4.fna.fbcdn.net/v/t1.18169-9/1907960_1587921528100086_290010407860471798_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeEzLTzB901u-xbqQ5Njy3HAimAXQHrUOfGKYBdAetQ58WaTfKS2PRY4wXyKjapnkWdby3p1aiuushaHB3ymhO3Y&_nc_ohc=LQvScxgjjZsQ7kNvgGLdAHB&_nc_oc=Adj0KwTkOCzQTga5-kZkNsIn722QuvuoEAumBVtI8BkZimapnMTF4k7oo_vdWZZwhC4&_nc_ht=scontent.flim6-4.fna&oh=00_AYAgjX0T8GJkl9RwE3KJxaeTgcJMyHZM3BKCZE1Z5vt72g&oe=66B10C5A",
+            "https://scontent.flim6-4.fna.fbcdn.net/v/t1.18169-9/10258213_1601833700042202_5697087835830301419_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeGwNiAHWcmkv2YXszsbnOW6Ftb-5jMey0wW1v7mMx7LTGQFguYHiHFy6kivzgE5lHItQs1CCk4hv5pZa-EGx3Q4&_nc_ohc=ZLcp_sDKdkEQ7kNvgGCUISY&_nc_oc=Adi1CeSopOUGUfM5sjrz-1Zc6J5afZC_NDmnlxPjHNNGNQfP5lRANoyvt4eGyPl0pjY&_nc_ht=scontent.flim6-4.fna&oh=00_AYDSBInNvF1vQHG8Vur9vqpD__V1zx64hUPR4gouoLMuTQ&oe=66B136DB",
+            "https://scontent.flim6-4.fna.fbcdn.net/v/t1.18169-9/1234011_1441682126057361_1504278526_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5c4c00&_nc_eui2=AeEvNjQHPnvlaElV8jDODCtcKhql6QlPPFsqGqXpCU88W5Pll6JC_NN0MJJNDO-G5POT4eAEDVtK_zFAHGiS6sEO&_nc_ohc=8dxFjbMQR8sQ7kNvgHrSKkl&_nc_oc=AdgcBtYQWeZQ61Qi4fItbJde8smk7k63ylV2l3moYkzM2bnsRZ3XPs6MQmOMHz8Cgdg&_nc_ht=scontent.flim6-4.fna&oh=00_AYDX9d5Erau-c-atvaB4G7VieAtGwB0mlgI1QquDv48JGA&oe=66B0F9FD"
+        ];
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const startButton = document.getElementById("startButton");
+            const sliderContainer = document.querySelector("#photos_recorrido .swiper-container");
+
+            startButton.addEventListener("click", function () {
+                startButton.style.display = "none";
+
+                
+                // Llenar el slider con las imágenes
+                const swiperWrapper = sliderContainer.querySelector(".swiper-wrapper");
+                
+                document.getElementById('photos_recorrido').scrollIntoView({ behavior: 'smooth' });
+
+                photos.reverse().forEach(photoUrl => {
+                    const slide = document.createElement("div");
+                    slide.classList.add("swiper-slide");
+                    slide.innerHTML = `<img src="${photoUrl}" alt="slide">`;
+                    swiperWrapper.appendChild(slide);
+                });
+
+                // Inicializar Swiper
+                const mySwiper = new Swiper('.swiper-container', {
+                    // Configuración opcional de Swiper
+                    loop: false,
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    // Ajustes para la adaptación de imágenes
+                    slidesPerView: 1, // Mostrar solo una imagen a la vez
+                    spaceBetween: 5,
+                    autoHeight: true, // Ajusta automáticamente la altura del contenedor
+                    centeredSlides: true, // Centra el slide activo
+                    effect: 'slide', // Efecto de transición de deslizamiento
+                    breakpoints: {
+                        // Configuración responsive
+                        640: {
+                            slidesPerView: 1,
+                            spaceBetween: 0
+                        },
+                        768: {
+                            slidesPerView: 1,
+                            spaceBetween: 0
+                        },
+                        1024: {
+                            slidesPerView: 1,
+                            spaceBetween: 0
+                        }
+                    }
+                });
+
+                // Mostrar botones de navegación
+                const nextButton = sliderContainer.querySelector('.swiper-button-next');
+                const prevButton = sliderContainer.querySelector('.swiper-button-prev');
+                nextButton.style.display = 'block';
+                prevButton.style.display = 'block';
+            });
+        });
+
+
+
+    </script>
+
+</body>
+</html>
