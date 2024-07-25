@@ -24,6 +24,17 @@ p{
     max-width: 80%;
 } */
 
+.enemiga_nombre{
+    font-size: 60px;
+    font-weight: 800;
+    text-transform: uppercase;
+    display: inline-block;
+    background: linear-gradient(50deg, green, rgb(255, 0, 255));
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 0;
+}
+
 .quote {
     display: inline-block;
     font-size: 1.5em;

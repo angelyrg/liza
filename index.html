@@ -14,8 +14,9 @@
 
     <main>
 
-        <h1>¡Hola Ruliza!</h1>
-        <img class="friend-photo" src="https://scontent.flim6-2.fna.fbcdn.net/v/t39.30808-6/392861066_4385123818379829_4792383254647713859_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE8HwgqWSWtDETjk6dboEQQL9JYx9tdSUEv0ljH211JQXQBy73ljJVRmMmHXYaRblDXNIdGYfpSR940DFKRrC0-&_nc_ohc=bkZFchXe33kQ7kNvgHjMei_&_nc_oc=AdgPDFOEh6tysKnN1u-y2BBvVjNa7CskeTiQJOY4LjWhVy6vzOV0ur1ZR2fnlk_eaOU&_nc_zt=23&_nc_ht=scontent.flim6-2.fna&oh=00_AYDWJg0SVXi57g6EITE2Zx5Affub_CI2g_jWqs1GSiF0HQ&oe=668F6961" alt="Foto de mi amiga" >
+        <h1 class="enemiga_nombre">¡Ruliza!</h1>
+        <br>
+        <img class="friend-photo" src="https://z-p3-scontent.flim3-2.fna.fbcdn.net/v/t39.30808-6/270260901_3817876161771267_2149327315663984919_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFT9P8YaI-UhtjHo8Ht3ZBumumBJZsZ3VSa6YElmxndVMTzZmGDQIyjReP4CIdjd1U2ae4NV4CFlZWyeQivOkMx&_nc_ohc=Jb0568W1okkQ7kNvgGDNxqq&_nc_zt=23&_nc_ht=z-p3-scontent.flim3-2.fna&oh=00_AYCRnNex3FTEvQumKOnJ062ldoAGwudZ78epGYEzlRlhdw&oe=66A7BEB9" alt="Foto de mi enemiga" >
     
         <p>Esta página esté hecho para arrancarte una sonrisa y hacer tu día un poco más brillante,</p>
         <p>y también para hacerte recordar que:</p>
@@ -245,7 +246,7 @@
                 photos.reverse().forEach(photoUrl => {
                     const slide = document.createElement("div");
                     slide.classList.add("swiper-slide");
-                    slide.innerHTML = `<img src="${photoUrl}" alt="slide">`;
+                    slide.innerHTML = `<img src="${photoUrl}" alt="enemiga">`;
                     swiperWrapper.appendChild(slide);
                 });
 
